@@ -30,3 +30,14 @@ function downloadPDF() {
     link.download = 'Woriayibapri_Hearty_Alapher_Resume.pdf';
     link.click();
 }
+
+function sendEmail() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    const recipient = 'alapherwori8g5@gmail.com';
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    window.location.href = mailtoLink;
+  }
