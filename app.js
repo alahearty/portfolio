@@ -1,13 +1,32 @@
-(function () {
-    [...document.querySelectorAll(".control")].forEach(button => {
-        button.addEventListener("click", function() {
-            document.querySelector(".active-btn").classList.remove("active-btn");
-            this.classList.add("active-btn");
-            document.querySelector(".active").classList.remove("active");
-            document.getElementById(button.dataset.id).classList.add("active");
-        })
+document.addEventListener("DOMContentLoaded", () => {
+    const controls = document.querySelectorAll(".control");
+    controls.forEach(button => {
+        button.addEventListener("click", handleControlClick);
     });
-    document.querySelector(".theme-btn").addEventListener("click", () => {
+
+    const themeBtn = document.querySelector(".theme-btn");
+    themeBtn.addEventListener("click", toggleLightMode);
+
+    function handleControlClick() {
+        const activeBtn = document.querySelector(".active-btn");
+        activeBtn.classList.remove("active-btn");
+        this.classList.add("active-btn");
+
+        const activeElement = document.querySelector(".active");
+        activeElement.classList.remove("active");
+        const targetElement = document.getElementById(this.dataset.id);
+        targetElement.classList.add("active");
+    }
+    
+    function toggleLightMode() {
         document.body.classList.toggle("light-mode");
-    })
-})();
+    }
+   
+});
+
+function downloadPDF() {
+    var link = document.createElement('a');
+    link.href = 'Woriayibapri_Hearty_Alapher_Resume.pdf';
+    link.download = 'Woriayibapri_Hearty_Alapher_Resume.pdf';
+    link.click();
+}
